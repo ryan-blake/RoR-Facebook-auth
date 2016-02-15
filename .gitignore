@@ -18,3 +18,4 @@
 
 #IGNORE
 /config/application.yml
+config/env.yml
