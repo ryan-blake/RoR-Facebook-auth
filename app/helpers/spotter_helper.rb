@@ -1,0 +1,2 @@
+module SpotterHelper
+end

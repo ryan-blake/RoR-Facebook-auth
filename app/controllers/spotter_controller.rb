@@ -1,0 +1,2 @@
+class SpotterController < ApplicationController
+end

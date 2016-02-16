@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160214220641) do
+ActiveRecord::Schema.define(version: 20160216030344) do
 
   create_table "gyms", force: :cascade do |t|
     t.string   "name"
@@ -22,12 +22,40 @@ ActiveRecord::Schema.define(version: 20160214220641) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "spots", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "weight"
+    t.integer  "time"
+    t.string   "body"
+    t.integer  "user_id"
+    t.integer  "gym_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "spots", ["gym_id"], name: "index_spots_on_gym_id"
+  add_index "spots", ["user_id"], name: "index_spots_on_user_id"
+
+  create_table "spotters", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "spot_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "spotters", ["spot_id"], name: "index_spotters_on_spot_id"
+  add_index "spotters", ["user_id"], name: "index_spotters_on_user_id"
+
   create_table "users", force: :cascade do |t|
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
+    t.string   "email"
+    t.integer  "gym_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "users", ["gym_id"], name: "index_users_on_gym_id"
 
 end
