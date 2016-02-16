@@ -22,7 +22,7 @@ belongs_to :gym
     create(
     provider: auth['provider'],
     uid: auth['uid'],
-    name: auth['info']['name']
+    name: auth['name'],
     )
   end
 end

@@ -1,13 +1,4 @@
 Rails.application.routes.draw do
-  get 'gym/index'
-
-  get 'gym/new'
-
-  get 'gym/edit'
-
-  get 'gym/destroy'
-
-  get 'gym/show'
 
   root 'home#index'
 
@@ -16,6 +7,10 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: "sessions#create"
 
   delete 'sign_out', to: "sessions#destroy", as: 'sign_out'
+
+    resources :gyms do
+      resources :spots
+    end
 
 
 end
